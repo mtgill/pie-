@@ -40,7 +40,7 @@ const pies = [
       ingredients: 'Pecans, sugar, butter, flour',
       bakeTemp: 5000,
       drinkPairing: 'Milk',
-      imageURL: 'https://cookiesandcups.com/wp-content/uploads/2018/10/pecanpie-3.jpg',
+      imageUrl: 'https://cookiesandcups.com/wp-content/uploads/2018/10/pecanpie-3.jpg',
       instructor: 'Saul',
       iceCream: 'Vanilla',
     },
@@ -49,7 +49,7 @@ const pies = [
       ingredients: 'lemons, sugar, butter, flour',
       bakeTemp: 5000,
       drinkPairing: 'Water',
-      imageURL: 'https://www.williams-sonoma.com/wsimgs/rk/images/dp/recipe/201851/0020/img38l.jpg',
+      imageUrl: 'https://www.williams-sonoma.com/wsimgs/rk/images/dp/recipe/201851/0020/img38l.jpg',
       instructor: 'Saul',
       iceCream: 'none',
     },
@@ -63,7 +63,10 @@ const printToDom = (divId, textToPrint) => {
 const pieNames = () => {
     let domString = '';
     for (let i = 0; i < pies.length; i++){
-        domString += `<h2>Name: ${pies[i].name}</h2>`;
+        domString += `<div class='card'>`;
+        domString += `<h2>${pies[i].name}</h2>`;
+        domString += `<img src=${pies[i].imageUrl} />`;
+        domString += `</div>`;
     }
     printToDom('pies', domString);
 };
