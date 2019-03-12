@@ -71,16 +71,25 @@ const pieNames = () => {
     printToDom('pies', domString);
 };
 
+const buttonClick = () => {
+  console.log('you clicked a button');
+};
+
+
+
 /* For Each example of the for loop above
 pies.forEach((pie) => {
     domString += `<h2>Name: ${pies.name}</h2>`;
 })
 */
 
-
+const buttonEvents = () => {
+  document.getElementById('Zoe').addEventListener('click', buttonClick);
+};
 
 
 const init = () =>{
+  buttonEvents();
     pieNames();
 };
 
