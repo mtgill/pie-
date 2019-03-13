@@ -53,44 +53,88 @@ const pies = [
       instructor: 'Saul',
       iceCream: 'none',
     },
+    
   ];
+
+  
 
 const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
     selectedDiv.innerHTML = textToPrint;
 };
 
-const pieNames = () => {
-    let domString = '';
-    for (let i = 0; i < pies.length; i++){
-        domString += `<div class='card'>`;
-        domString += `<h2>${pies[i].name}</h2>`;
-        domString += `<img src=${pies[i].imageUrl} />`;
-        domString += `</div>`;
+const buttonBuilder = () => {
+  let buttonString = '';
+  buttonString += `<button id='All'>All</button>`;
+
+  let instructorArray = [];
+  for (let i = 0; i < pies.length; i++) {
+   // let buttons = document.getElementById('instructor-buttons').childNodes;
+    
+    if (!instructorArray.includes(pies[i].instructor)) {
+   instructorArray.push(pies[i].instructor);
+   buttonString += `<button id=${pies[i].instructor}>${pies[i].instructor}</button>`;
+  console.log(instructorArray);
     }
+  
+  }
+  
+  
+  printToDom('instructor-buttons', buttonString);
+  buttonEvents();
+};
+
+const pieNames = (monkeybutts) => {
+    
+    let domString = '';
+    monkeybutts.forEach((pie) => {
+       
+        domString += `<div class='card'>`;
+        domString += `<h2>${pie.name}</h2>`;
+        domString += `<img src=${pie.imageUrl} />`;
+        domString += `</div>`;
+    });
+    
     printToDom('pies', domString);
 };
 
-const buttonClick = () => {
-  console.log('you clicked a button');
+const buttonClick = (e) => {
+  const buttonId = e.target.id;
+  //console.log('you clicked a button', e.target.id);
+  // loop over the pies array
+  // if the value of the instructor key is the same as the button ID - keep that object
+  // once we have all the pies for that instructor - print
+  
+  const selectedPies = [];
+  pies.forEach((pie) => {
+    if (pie.instructor === buttonId) {
+      selectedPies.push(pie);
+    }
+
+  });
+  
+  if(buttonId === 'All') {
+    pieNames(pies);
+  } else {
+    pieNames(selectedPies);
+  }
+
 };
 
 
 
-/* For Each example of the for loop above
-pies.forEach((pie) => {
-    domString += `<h2>Name: ${pies.name}</h2>`;
-})
-*/
-
 const buttonEvents = () => {
   document.getElementById('Zoe').addEventListener('click', buttonClick);
+  document.getElementById('Saul').addEventListener('click', buttonClick);
+  document.getElementById('Michael').addEventListener('click', buttonClick);
+ document.getElementById('All').addEventListener('click', buttonClick);
 };
 
 
 const init = () =>{
-  buttonEvents();
-    pieNames();
+    buttonBuilder();
+   
+    pieNames(pies);
 };
 
 init();
