@@ -46,7 +46,7 @@ alert(text)
 Makes an array of pies
 
 ## Screenshots 
-![Image of pies] (https://raw.githubusercontent.com/mtgill/pie-/master/screenshot/Screenshot%20(1).png)
+![Image of pies](https://raw.githubusercontent.com/mtgill/pie-/master/screenshot/Screenshot%20(1).png)
 
 ## Getting Started 
 ```
